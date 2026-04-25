@@ -1,107 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Elite Store</title>
 
-    header {
-      background: #111;
-      color: white;
-      padding: 15px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: white;
+}
 
-    nav button {
-      margin: 10px;
-      padding: 10px 20px;
-      border: none;
-      background: orange;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  background: #0a0a0a;
+  border-right: 3px solid gold;
+  padding-top: 20px;
+}
 
-    nav button:hover {
-      background: darkorange;
-    }
+.sidebar button {
+  display: block;
+  width: 90%;
+  margin: 15px auto;
+  padding: 12px;
+  background: white;
+  color: black;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
 
-    .section {
-      display: none;
-      padding: 20px;
-    }
+.sidebar button:hover {
+  transform: scale(1.05);
+  background: gold;
+}
 
-    .active {
-      display: block;
-    }
+/* Content */
+.content {
+  margin-left: 240px;
+  padding: 20px;
+}
 
-    .product {
-      background: white;
-      margin: 15px auto;
-      padding: 15px;
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+.section {
+  display: none;
+}
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-  </style>
+.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Product list */
+.product-list div {
+  background: #111;
+  padding: 12px;
+  margin: 10px 0;
+  border-left: 3px solid gold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product-list div:hover {
+  background: #222;
+}
+
+/* Product detail */
+.product-detail {
+  display: none;
+}
+
+.product-detail img {
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Back button */
+.back-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  color: black;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: gold;
+}
+
+/* WhatsApp icon */
+.whatsapp {
+  width: 20px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+</style>
+
 </head>
 
 <body>
 
-<header>
-  <h1>My Website</h1>
-</header>
-
-<nav>
-  <button onclick="showSection('home')">Home</button>
+<div class="sidebar">
+  <button onclick="showSection('contact')">Contact Us</button>
   <button onclick="showSection('products')">Products</button>
-  <button onclick="callNumber()">Contact</button>
-</nav>
-
-<div id="home" class="section active">
-  <h2>Welcome Bro 🔥</h2>
-  <p>This is your personal website!</p>
+  <button onclick="showSection('upcoming')">Upcoming Projects</button>
 </div>
 
-<div id="products" class="section">
-  <h2>Products</h2>
+<div class="content">
 
-  <div class="product">
-    <h3>Playing Cards Pack</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Deck_of_cards.jpg/320px-Deck_of_cards.jpg">
-    <p>High quality playing cards</p>
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>
+      +8801819696308 
+      <img class="whatsapp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    </p>
+    <p>
+      +8801977372717 
+      <img class="whatsapp" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    </p>
   </div>
 
-  <div class="product">
-    <h3>Argentina Jersey</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Argentina_home_jersey_2022.svg/320px-Argentina_home_jersey_2022.svg.png">
-    <p>Official Argentina football jersey 🇦🇷</p>
+  <!-- PRODUCTS -->
+  <div id="products" class="section">
+    <h2>Products</h2>
+
+    <div class="product-list">
+      <div onclick="openProduct('p1')">Argentina World Cup 2026 Jersey</div>
+      <div onclick="openProduct('p2')">Portugal Jersey</div>
+      <div onclick="openProduct('p3')">France Jersey</div>
+      <div onclick="openProduct('p4')">Spain Jersey</div>
+      <div onclick="openProduct('p5')">England Jersey</div>
+      <div onclick="openProduct('p6')">Italy Jersey</div>
+      <div onclick="openProduct('p7')">World Cup Ball 2026</div>
+    </div>
+  </div>
+
+  <!-- UPCOMING -->
+  <div id="upcoming" class="section">
+    <h2>Upcoming Projects</h2>
+    <p>More premium products coming soon 🔥</p>
+  </div>
+
+  <!-- PRODUCT DETAILS -->
+
+  <div id="p1" class="product-detail">
+    <h2>Argentina Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Argentina_home_jersey_2022.svg">
+    <p>Premium breathable fabric, official style.</p>
+    <p>Price: ৳1500</p>
+    <p>Sizes: S, M, L, XL</p>
+  </div>
+
+  <div id="p2" class="product-detail">
+    <h2>Portugal Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Portugal_kit.png">
+    <p>High quality sportswear.</p>
+    <p>Price: ৳1400</p>
+    <p>Sizes: S, M, L, XL</p>
+  </div>
+
+  <div id="p3" class="product-detail">
+    <h2>France Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/France_home_jersey_2022.svg">
+    <p>Comfortable and stylish.</p>
+    <p>Price: ৳1500</p>
+  </div>
+
+  <div id="p4" class="product-detail">
+    <h2>Spain Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Spain_kit.png">
+    <p>Top quality material.</p>
+    <p>Price: ৳1400</p>
+  </div>
+
+  <div id="p5" class="product-detail">
+    <h2>England Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/England_kit.png">
+    <p>Elegant design.</p>
+    <p>Price: ৳1500</p>
+  </div>
+
+  <div id="p6" class="product-detail">
+    <h2>Italy Jersey</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Italy_kit.png">
+    <p>Premium Italian style.</p>
+    <p>Price: ৳1500</p>
+  </div>
+
+  <div id="p7" class="product-detail">
+    <h2>World Cup Ball 2026</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Football.png">
+    <p>Professional match ball.</p>
+    <p>Price: ৳2000</p>
   </div>
 
 </div>
+
+<button class="back-btn" onclick="goBack()">Back</button>
 
 <script>
-  function showSection(sectionId) {
-    document.querySelectorAll('.section').forEach(section => {
-      section.classList.remove('active');
-    });
-    document.getElementById(sectionId).classList.add('active');
-  }
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  document.querySelectorAll('.product-detail').forEach(p => p.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
 
-  function callNumber() {
-    window.location.href = "tel:+8801812696308";
-  }
+function openProduct(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  document.querySelectorAll('.product-detail').forEach(p => p.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+function goBack() {
+  document.querySelectorAll('.product-detail').forEach(p => p.style.display = 'none');
+  document.getElementById('products').style.display = 'block';
+}
 </script>
 
 </body>
