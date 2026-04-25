@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px;
+    }
+
+    nav button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: orange;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    nav button:hover {
+      background: darkorange;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .product {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>My Website</h1>
+</header>
+
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('products')">Products</button>
+  <button onclick="callNumber()">Contact</button>
+</nav>
+
+<div id="home" class="section active">
+  <h2>Welcome Bro 🔥</h2>
+  <p>This is your personal website!</p>
+</div>
+
+<div id="products" class="section">
+  <h2>Products</h2>
+
+  <div class="product">
+    <h3>Playing Cards Pack</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Deck_of_cards.jpg/320px-Deck_of_cards.jpg">
+    <p>High quality playing cards</p>
+  </div>
+
+  <div class="product">
+    <h3>Argentina Jersey</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Argentina_home_jersey_2022.svg/320px-Argentina_home_jersey_2022.svg.png">
+    <p>Official Argentina football jersey 🇦🇷</p>
+  </div>
+
+</div>
+
+<script>
+  function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+  }
+
+  function callNumber() {
+    window.location.href = "tel:+8801812696308";
+  }
+</script>
+
+</body>
+</html>
